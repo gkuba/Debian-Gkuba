@@ -16,6 +16,7 @@ sudo su
 visudo /etc/sudoers
 ```
 Add this to the end of your /etc/sudoers file. 
+
 _Change gkuba to your username._
 ```bash
 gkuba   ALL=(ALL) NOPASSWD:ALL
