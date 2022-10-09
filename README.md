@@ -11,11 +11,13 @@ Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/uno
 
 _Run as ROOT_
 ```bash
+wget https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/root.sh
+chmod +x root.sh
 sudo su
 ./root.sh
 ```
 
 ### Theme Stuff - User Level
  ```bash
- ./user.sh
+  ./user.sh
  ```
