@@ -1,8 +1,6 @@
 # Debian-Gkuba
-Debian customizations from Chris Titus Tech
- 
-## Requirements
-_This install changes Debian to the SID (Dev) Branch_
+
+This is my customization for fresh Debian installs.
 
 ### Download Debian non-free netinstall
 
