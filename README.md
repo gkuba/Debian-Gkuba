@@ -6,7 +6,7 @@ This is my customization for fresh Debian installs.
 
 Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-builds/amd64/iso-cd/>
 
-`555555`do NOT grab the EDU download and this includes non-free and firmware}$$
+`#555555`do NOT grab the EDU download and this includes non-free and firmware}$$
 ### Base Stuff - Root
 
 This changes it so you don't need a password when you run sudo commands. This **MUST** be run as **ROOT** and with **VISUDO**.
