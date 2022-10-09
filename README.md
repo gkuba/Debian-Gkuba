@@ -12,12 +12,12 @@ Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/uno
 ### Base Stuff - Root
 
 _Run as ROOT_
-```
+```bash
 sudo su
 ./root.sh
 ```
 
 ### Theme Stuff - User Level
- ```
+ ```bash
  ./user.sh
  ```
