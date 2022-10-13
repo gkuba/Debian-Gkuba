@@ -29,6 +29,18 @@ chmod +x root.sh
 sudo su
 ./root.sh
 ```
+## If running on Debian - Bullseye
+
+To install Nala you will have to change your sources.list file to the bookworm branch from bullseye.
+
+Open your `/etc/apt/sources.list` file in your editor of choice and change "bullseye" to "bookworm"
+```bash
+deb http://deb.debian.org/debian bookworm main non-free contrib
+deb http://deb.debian.org/debian bookworm-updates main non-free contrib
+deb http://security.debian.org/debian-security bookworm-security main non-free contrib
+deb http://ftp.debian.org/debian bookworm-backports main
+```
+It is recommended to do this before running the "root.sh" script.
 
 ### Theme Stuff - User Level
  ```bash
