@@ -4,13 +4,13 @@ This is my customization for fresh Debian installs.
 
 ## Requirements
 
-_This install changes Debian to the SID (Dev) Branch_
+__NOTE:__ _This install changes Debian to the SID (Dev) Branch_
 
 ### Download Debian non-free netinstall
 
 Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/weekly-builds/amd64/iso-cd/>
 
-_do NOT grab the EDU download and this includes non-free and firmware_
+__NOTE:__ _do NOT grab the EDU download and this includes non-free and firmware_
 
 ### To Install
 
@@ -18,11 +18,13 @@ _do NOT grab the EDU download and this includes non-free and firmware_
 bash <(wget -qO- https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/install.sh)
 ```
 
+___
+
 ## Optional Changes
 
 If you would like it not to prompt you for a password for every sudo operation you can edit the sudoers file as follows.
 
-_These changes MUST be run as the root user_
+__NOTE:__ _These changes MUST be run as the root user_
 
 ```bash
 sudo su
