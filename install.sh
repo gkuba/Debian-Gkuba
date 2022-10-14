@@ -7,10 +7,12 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
  wget -q https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/sources.list -O sources.list
+ wget -q https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/adoptium.list -O adoptium.list
 
 # Change Debian to SID Branch
 cp /etc/apt/sources.list /etc/apt/sources.list.bak
 mv sources.list /etc/apt/sources.list
+mv adoptium.list /etc/apt/sources.list.d/adoptium.list
 
 # Update packages list and update system
 apt update
