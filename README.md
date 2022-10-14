@@ -36,3 +36,11 @@ username    ALL=(ALL) NOPASSWD:ALL
 ```
 
 Then reboot.
+
+### AMP Java Requirements
+
+If you are installing AMP this install script already added the adoptium java repo you just need to run the following to get the right java versions.
+
+```bash
+sudo apt install temurin-8-jdk temurin-17-jdk temurin-18-jdk
+```
