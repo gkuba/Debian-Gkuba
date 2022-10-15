@@ -18,6 +18,10 @@ __NOTE:__ _do NOT grab the EDU download and this includes non-free and firmware_
 bash <(wget -qO- https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/install.sh)
 ```
 
+My bash prompt and settings can be found here [gkuba/dotfiles][gkuba/dotfiles]
+
+[gkuba/dotfiles]: https://github.com/gkuba/dotfiles
+
 ___
 
 ## Optional Changes
