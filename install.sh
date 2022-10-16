@@ -40,6 +40,9 @@ function promptRepoChange
 {
   clear
   echo
+  echo -e "--------------------------"
+  echo -e "    ${BLUE}System Information${ENDCOLOR}    "
+  echo -e "--------------------------"
   echo -e "${BLUE}OS Name${ENDCOLOR}: $NAME"
   echo -e "${BLUE}Version${ENDCOLOR}: $VERSION_CODENAME"
   echo 
