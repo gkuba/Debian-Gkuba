@@ -188,9 +188,9 @@ promptInstallJava
 
 echo
 echo
-echo "===================="
-echo "Installation Summary"
-echo "===================="
+echo "----------------------------"
+echo "    ${BLUE}Installation Summary${ENDCOLOR}    "
+echo "----------------------------"
 echo
 echo -en "${BLUE}Testing Repo${ENDCOLOR}:  "
 if [[ "$checkRepoChange" =~ ^[Yy]$ ]]; then echo -e "${GREEN}Yes${ENDCOLOR}"; else echo -e "${RED}No${ENDCOLOR}"; fi
