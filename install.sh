@@ -14,7 +14,8 @@ PM_COMMAND=apt-get
 PM_INSTALL="install -y"
 WGET_IS_PRESENT="$(isPresent wget)"
 JAVA_PACKAGE="temurin-8-jdk temurin-17-jdk temurin-18-jdk"
-WANTED_PACKAGES="git curl unzip nala vim most fontconfig zsh zsh-autosuggestions zsh-syntax-highlighting fonts-firacode"
+WANTED_PACKAGES_TESTING="git curl unzip nala vim most fontconfig zsh zsh-autosuggestions zsh-syntax-highlighting fonts-firacode"
+WANTED_PACKAGES_STABLE="git curl unzip vim most fontconfig zsh zsh-autosuggestions zsh-syntax-highlighting fonts-firacode"
 RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
@@ -154,10 +155,20 @@ fi
 function installPackages
 {
   echo
-  echo -e "${YELLOW}Installing packages ....${ENDCOLOR}"
-  echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES ${ENDCOLOR}"
-  echo
-  $PM_COMMAND $PM_INSTALL $WANTED_PACKAGES
+  if [ $VERSION_CODENAME = "bullseye" ]; then
+    echo
+    echo -e "${YELLOW}Installing packages ....${ENDCOLOR}"
+    echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES_STABLE ${ENDCOLOR}"
+    echo
+    $PM_COMMAND $PM_INSTALL $WANTED_PACKAGES_STABLE
+  else
+    echo
+    echo -e "${YELLOW}Installing packages ....${ENDCOLOR}"
+    echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES ${ENDCOLOR}"
+    echo
+    $PM_COMMAND $PM_INSTALL $WANTED_PACKAGES_TESTING
+  fi
+  
 }
 
 if [ -n "$*" ]; then
