@@ -37,8 +37,8 @@ function promptRepoChange
   echo "Version: $VERSION_CODENAME"
   echo 
   echo
-  echo "Would you like to change to latest Testing ($TESTING_RELEASE) branch?"
-  echo "This will make a backup copy of your /etc/apt/sources.list then update them to your choice."
+  echo "Would you like to change to latest Testing ($TESTING_RELEASE) repo?"
+  echo "This will make a backup copy of your /etc/apt/sources.list then update with $TESTING_RELEASE repos."
   echo
   echo "You can revert this anytime by changing /etc/sources.list.bak to /etc/sources.list like this:"
   echo "sudo mv /etc/apt/sources.list.bak /etc/apt/sources.list"
