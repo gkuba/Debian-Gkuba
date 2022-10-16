@@ -40,18 +40,18 @@ function promptRepoChange
 {
   clear
   echo
-  echo -e "${BLUE}OS Name:${ENDCOLOR} $NAME"
-  echo -e "${BLUE}Version:${ENDCOLOR} $VERSION_CODENAME"
+  echo -e "${BLUE}OS Name${ENDCOLOR}: $NAME"
+  echo -e "${BLUE}Version${ENDCOLOR}: $VERSION_CODENAME"
   echo 
   echo
-  echo -e "Would you like to change to latest Testing ${MAGENTA}($TESTING_RELEASE)${ENDCOLOR} repo?"
+  echo -e "Would you like to change to latest Testing (${MAGENTA}$TESTING_RELEASE${ENDCOLOR}) repo?"
   echo -e "This will make a backup copy of your /etc/apt/sources.list then update with ${MAGENTA}$TESTING_RELEASE${ENDCOLOR} repos."
   echo
   echo "You can revert this anytime by changing /etc/sources.list.bak to /etc/sources.list like this:"
   echo "sudo mv /etc/apt/sources.list.bak /etc/apt/sources.list"
   echo
   echo
-  read -en1 -rp "${BLUE}Update Repo${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkRepoChange
+  read -en1 -p "${BLUE}Update Repo${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkRepoChange
   checkRepoChange=${checkRepoChange:-n}
   echo
   echo
@@ -67,7 +67,7 @@ function promptInstallJava
   echo "Adoptium JDKs are part of the Eclipse Foundation and are free to use under the GNU/GPL 2 License"
   echo
   echo
-  read -en1 -rp "${BLUE}Install Java${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkInstallJava
+  read -en1 -p "${BLUE}Install Java${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkInstallJava
   checkInstallJava=${checkInstallJava:-n}
 }
 
