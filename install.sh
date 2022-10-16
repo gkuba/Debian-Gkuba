@@ -15,23 +15,23 @@ PM_INSTALL="install -y"
 WGET_IS_PRESENT="$(isPresent wget)"
 JAVA_PACKAGE="temurin-8-jdk temurin-17-jdk temurin-18-jdk"
 WANTED_PACKAGES="git curl unzip nala vim most fontconfig zsh zsh-autosuggestions zsh-syntax-highlighting fonts-firacode"
-RED="\033[31m"
-GREEN="\033[32m"
-YELLOW="\033[33m"
-BLUE="\033[34m"
-MAGENTA="\033[35m"
-ENDCOLOR="\033[0m"
-ITALICYELLOW="\033[3;33m"
+RED="\e[31m"
+GREEN="\e[32m"
+YELLOW="\e[33m"
+BLUE="\e[34m"
+MAGENTA="\e[35m"
+ENDCOLOR="\e[0m"
+ITALICYELLOW="\e[3;33m"
 
 ## Check if Script is Run as Root
 if [[ $EUID -ne 0 ]]; then
-  echo "${RED}You must be a root user to run this script, please run \"sudo su\" then try again.${ENDCOLOR}"
+  echo -e "${RED}You must be a root user to run this script, please run \"sudo su\" then try again.${ENDCOLOR}"
   exit 1
 fi
 
 ## Checks for wget
 if [[ $WGET_IS_PRESENT -ne 1 ]]; then
-  echo "${RED}Wget is not installed and required for this script to run. Please install wget then try again${ENDCOLOR}"
+  echo -e "${RED}Wget is not installed and required for this script to run. Please install wget then try again${ENDCOLOR}"
   exit 1
 fi
 
@@ -40,18 +40,18 @@ function promptRepoChange
 {
   clear
   echo
-  echo "${BLUE}OS Name:${ENDCOLOR} $NAME"
-  echo "${BLUE}Version:${ENDCOLOR} $VERSION_CODENAME"
+  echo -e "${BLUE}OS Name:${ENDCOLOR} $NAME"
+  echo -e "${BLUE}Version:${ENDCOLOR} $VERSION_CODENAME"
   echo 
   echo
-  echo "Would you like to change to latest Testing ${MAGENTA}($TESTING_RELEASE)${ENDCOLOR} repo?"
-  echo "This will make a backup copy of your /etc/apt/sources.list then update with ${MAGENTA}$TESTING_RELEASE${ENDCOLOR} repos."
+  echo -e "Would you like to change to latest Testing ${MAGENTA}($TESTING_RELEASE)${ENDCOLOR} repo?"
+  echo -e "This will make a backup copy of your /etc/apt/sources.list then update with ${MAGENTA}$TESTING_RELEASE${ENDCOLOR} repos."
   echo
   echo "You can revert this anytime by changing /etc/sources.list.bak to /etc/sources.list like this:"
   echo "sudo mv /etc/apt/sources.list.bak /etc/apt/sources.list"
   echo
   echo
-  read -n1 -rp "${BLUE}Update Repo${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkRepoChange
+  read -en1 -rp "${BLUE}Update Repo${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkRepoChange
   checkRepoChange=${checkRepoChange:-n}
   echo
   echo
@@ -63,11 +63,11 @@ function promptInstallJava
   echo
   echo "Would you like to install the Java?"
   echo "This will install the Adoptium Java JDK Repository and the following packages:"
-  echo "$JAVA_PACKAGE"
+  echo -e "${BLUE}$JAVA_PACKAGE${ENDCOLOR}"
   echo "Adoptium JDKs are part of the Eclipse Foundation and are free to use under the GNU/GPL 2 License"
   echo
   echo
-  read -n1 -rp "${BLUE}Install Java${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkInstallJava
+  read -en1 -rp "${BLUE}Install Java${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkInstallJava
   checkInstallJava=${checkInstallJava:-n}
 }
 
@@ -75,12 +75,12 @@ function promptInstallJava
 function writeSourcesList
 {
   echo
-  echo "${YELLOW}Backing up /etc/apt/sources.list to /etc/apt/sources.list.bak${ENDCOLOR}"
+  echo -e "${YELLOW}Backing up /etc/apt/sources.list to /etc/apt/sources.list.bak${ENDCOLOR}"
   echo
 
   cp /etc/apt/sources.list /etc/apt/sources.list.bak
 
-  echo "${YELLOW}Writing sources.list to /etc/apt/sources.list${ENDCOLOR}" 
+  echo -e "${YELLOW}Writing sources.list to /etc/apt/sources.list${ENDCOLOR}" 
   echo
   cat <<EOF > /etc/apt/sources.list 
 deb http://deb.debian.org/debian $TESTING_RELEASE main non-free contrib
@@ -94,7 +94,7 @@ EOF
 function addJavaRepo
 {
   echo
-  echo "${YELLOW}Adding AdoptOpenJDK APT repository...${ENDCOLOR}"
+  echo -e "${YELLOW}Adding AdoptOpenJDK APT repository...${ENDCOLOR}"
   echo
   wget -qO- https://packages.adoptium.net/artifactory/api/gpg/key/public > /usr/share/keyrings/adoptium.asc
 	echo "deb [signed-by=/usr/share/keyrings/adoptium.asc] https://packages.adoptium.net/artifactory/deb bullseye main" | sudo tee /etc/apt/sources.list.d/adoptium.list
@@ -103,7 +103,7 @@ function addJavaRepo
 function checkUpdtes 
 {
   echo
-  echo "${YELLOW}Checking for and installing updates...${ENDCOLOR}"
+  echo -e "${YELLOW}Checking for and installing updates...${ENDCOLOR}"
   echo
   $PM_COMMAND update
   $PM_COMMAND upgrade -y
@@ -114,13 +114,13 @@ function installJava
 {
   if [ -f /etc/apt/sources.list.d/adoptium.list ]; then
     echo
-    echo "${YELLOW}Installing $JAVA_PACKAGE ${ENDCOLOR}"
+    echo -e "${YELLOW}Installing $JAVA_PACKAGE ${ENDCOLOR}"
     echo
     checkUpdtes
     $PM_COMMAND $PM_INSTALL $JAVA_PACKAGE
   else
     echo
-    echo "${YELLOW}Java repository not set up. Please re-run \"./install.sh addJavaRepo\" first then retry. ${ENDCOLOR}"
+    echo -e "${YELLOW}Java repository not set up. Please re-run \"./install.sh addJavaRepo\" first then retry. ${ENDCOLOR}"
     echo
     exit 1
   fi
@@ -151,8 +151,8 @@ fi
 function installPackages
 {
   echo
-  echo "${YELLOW}Installing packages ....${ENDCOLOR}"
-  echo "${YELLOW}Selected Packages: $WANTED_PACKAGES ${ENDCOLOR}"
+  echo -e "${YELLOW}Installing packages ....${ENDCOLOR}"
+  echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES ${ENDCOLOR}"
   echo
   $PM_COMMAND $PM_INSTALL $WANTED_PACKAGES
 }
@@ -161,7 +161,7 @@ if [ -n "$*" ]; then
   for ARG in $@
   do
     if ! type "$ARG" &> /dev/null; then
-      echo "${RED}No such function $ARG ${ENDCOLOR}"
+      echo -e "${RED}No such function $ARG ${ENDCOLOR}"
       exit 1
     fi
   done
@@ -172,7 +172,7 @@ if [ -n "$*" ]; then
   done
   echo
   echo
-  echo "${GREEN}Done${ENDCOLOR}"
+  echo -e "${GREEN}Done${ENDCOLOR}"
   exit
  fi
 
@@ -190,14 +190,14 @@ echo "Installation Summary"
 echo "===================="
 echo
 echo -en "${BLUE}Testing Repo${ENDCOLOR}:  "
-if [[ "$checkRepoChange" =~ ^[Yy]$ ]]; then echo "${GREEN}Yes${ENDCOLOR}"; else echo "${RED}No${ENDCOLOR}"; fi
+if [[ "$checkRepoChange" =~ ^[Yy]$ ]]; then echo -e "${GREEN}Yes${ENDCOLOR}"; else echo -e "${RED}No${ENDCOLOR}"; fi
 echo -en "${BLUE}Install Java${ENDCOLOR}:  "
-if [[ "$checkInstallJava" =~ ^[Yy]$ ]]; then echo "${GREEN}Yes${ENDCOLOR}"; else echo "${RED}No${ENDCOLOR}"; fi
+if [[ "$checkInstallJava" =~ ^[Yy]$ ]]; then echo -e "${GREEN}Yes${ENDCOLOR}"; else echo -e "${RED}No${ENDCOLOR}"; fi
 echo
-echo "${YELLOW}Ready to install, Press ENTER to continue or CTRL+C to cancel.${ENDCOLOR}"
+echo -e "${YELLOW}Ready to install, Press ENTER to continue or CTRL+C to cancel.${ENDCOLOR}"
 read -r 
 echo
-echo "${YELLOW}Installing please wait ...${ENDCOLOR}"
+echo -e "${YELLOW}Installing please wait ...${ENDCOLOR}"
 
 installDependencies
 
@@ -207,6 +207,6 @@ fi
 
 installPackages
 
-echo "${GREEN}Installation complete.${ENDCOLOR}"
+echo -e "${GREEN}Installation complete.${ENDCOLOR}"
 
 exit 0
