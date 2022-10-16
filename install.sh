@@ -17,10 +17,10 @@ JAVA_PACKAGE="temurin-8-jdk temurin-17-jdk temurin-18-jdk"
 WANTED_PACKAGES="git curl unzip nala vim most fontconfig zsh zsh-autosuggestions zsh-syntax-highlighting fonts-firacode"
 RED="\e[31m"
 GREEN="\e[32m"
-YELLOW="\e[33m"
+YELLOW="\E[33m"
 BLUE="\e[34m"
 MAGENTA="\e[35m"
-ENDCOLOR="\e[0m"
+ENDCOLOR="\E[0m"
 ITALICYELLOW="\e[3;33m"
 
 ## Check if Script is Run as Root
