@@ -2,9 +2,32 @@
 
 This is my customization for fresh Debian installs.
 
-## Requirements
+## Install script information
 
-__NOTE:__ _This install changes Debian to the SID (Dev) Branch_
+The `install.sh` script has been completely re-written and now allows you to run parts of it instead of the full thing.
+This allows you to do things like change to the Testing repo or Install Java on a system already set up.
+Full list of these functions below just append the one you want at the end of the command listed.
+
+Example: ```bash bash <(wget -qO- https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/install.sh) addJavaRepo```
+
+### Functions
+
+- Change repos from **"Stable"** to **"Testing"** (Currently named Bookworm)
+
+```text
+promptRepoChange writeSourcesList
+```
+
+You then need to run `apt update && apt upgrade` for the changed to take effect.
+
+- Install Java
+
+```text
+promptInstallJava addJavaRepo installJava
+```
+
+This will install the Adoptium java JDK 8, 17 and 18.
+You can also just add the repo if you want to install a sepcific version or at a later time.
 
 ### Download Debian non-free netinstall
 
