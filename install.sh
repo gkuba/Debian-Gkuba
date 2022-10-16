@@ -51,7 +51,7 @@ function promptRepoChange
   echo "sudo mv /etc/apt/sources.list.bak /etc/apt/sources.list"
   echo
   echo
-  read -n1 -rp -e "${BLUE}Update Repo${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkRepoChange
+  read -n1 -ep  "${BLUE}Update Repo${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkRepoChange
   checkRepoChange=${checkRepoChange:-n}
   echo
   echo
@@ -67,7 +67,7 @@ function promptInstallJava
   echo "Adoptium JDKs are part of the Eclipse Foundation and are free to use under the GNU/GPL 2 License"
   echo
   echo
-  read -n1 -rp -e "${BLUE}Install Java${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkInstallJava
+  read -n1 -ep "${BLUE}Install Java${ENDCOLOR}: [${GREEN}y${ENDCOLOR}|${RED}N${ENDCOLOR}] " checkInstallJava
   checkInstallJava=${checkInstallJava:-n}
 }
 
