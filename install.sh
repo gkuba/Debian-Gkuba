@@ -163,6 +163,7 @@ if [ -n "$*" ]; then
   do
     $ARG_RUN
   done
+  echo
   echo "Done"
   exit
  fi
