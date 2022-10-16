@@ -6,7 +6,7 @@ This is my customization for fresh Debian installs.
 
 Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/11.5.0+nonfree/amd64/iso-cd/>
 
-__NOTE:__ _do NOT grab the EDU download and this includes non-free and firmware_
+__NOTE:__ _do NOT grab the EDU download. This image includes non-free and firmware_
 
 ### To Install
 
