@@ -65,7 +65,7 @@ function promptInstallJava
 }
 
 ## Updates the sources.list file to the specified option. 
-function writeSourceList
+function writeSourcesList
 {
   echo
   echo "Backing up /etc/apt/sources.list to /etc/apt/sources.list.bak"
@@ -123,7 +123,7 @@ function installJava
 function installDependencies
 {
 if [[ "$checkRepoChange" =~ ^[Yy]$ ]] && [[ "$VERSION_CODENAME" != "$TESTING_RELEASE" ]]; then
-  writeSourceList
+  writeSourcesList
 elif [[ "$checkRepoChange" =~ ^[Nn]$ ]]; then
   return
 else
