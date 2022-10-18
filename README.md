@@ -4,7 +4,11 @@ This is my customization for fresh Debian installs.
 
 ## Download Debian non-free netinstall
 
-Use the following Debian ISO as the base <https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/11.5.0+nonfree/amd64/iso-cd/>
+Use the following Debian ISO as the base:
+
+- [Debian 11.5 Stable non-free][Debian ISO]
+
+[Debian ISO]: https://cdimage.debian.org/cdimage/unofficial/non-free/cd-including-firmware/11.5.0+nonfree/amd64/iso-cd/
 
 __NOTE:__ _do NOT grab the EDU download. This image includes non-free and firmware_
 
@@ -16,11 +20,11 @@ bash <(wget -qO- https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/insta
 
 #### Install script information
 
-The `install.sh` script has been completely re-written and now allows you to run parts of it instead of the full thing.
-This allows you to do things like change to the Testing repo or Install Java on a system already set up.
+The `install.sh` script has been completely rewritten and now allows you to run parts of it instead of the full thing.
+This allows you to do things like change to the Testing repository or Install Java on a system already set up.
 Full list of these functions below just append the one you want at the end of the command listed.
 
-Example:
+This example will add the Adoptium Java repo:
 
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/install.sh) addJavaRepo
@@ -28,7 +32,7 @@ bash <(wget -qO- https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/insta
 
 ##### Functions
 
-- Change repos from **"Stable"** to **"Testing"** (Currently named Bookworm)
+- Change repository from __"Stable"__ to __"Testing"__ (Currently named Bookworm)
 
 ```text
 promptRepoChange writeSourcesList
@@ -43,7 +47,7 @@ promptInstallJava addJavaRepo installJava
 ```
 
 This will install the Adoptium java JDK 8, 17 and 18.
-You can also just add the repo if you want to install a sepcific version or at a later time.
+You can also just add the repository if you want to install a specific version or at a later time.
 
 ###### Misc Info
 
@@ -55,18 +59,21 @@ ___
 
 ## Optional Changes
 
-If you would like it not to prompt you for a password for every sudo operation you can edit the sudoers file as follows.
+This change can pose a security risk so only do this if you understand what you are doing.
+
+Adding this line to the sudoers file will make it so you don't get prompted for your password when using the `sudo` command.
+Use at your own risk.
 
 __NOTE:__ _These changes MUST be run as the root user_
 
-```bash
+```text
 sudo su
 visudo /etc/sudoers
 ```
 
-You will then add the following to the end of the file replacing "username" with your user:
+You will then add the following to the end of the file replacing \<username> with your user:
 
-```bash
+```text
 username    ALL=(ALL) NOPASSWD:ALL
 ```
 
