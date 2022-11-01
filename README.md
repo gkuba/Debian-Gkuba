@@ -54,27 +54,3 @@ You can also just add the repository if you want to install a specific version o
 My bash prompt and settings can be found here [gkuba/dotfiles][gkuba/dotfiles]
 
 [gkuba/dotfiles]: https://github.com/gkuba/dotfiles
-
-___
-
-## Optional Changes
-
-This change can pose a security risk so only do this if you understand what you are doing.
-
-Adding this line to the sudoers file will make it so you don't get prompted for your password when using the `sudo` command.
-Use at your own risk.
-
-__NOTE:__ _These changes MUST be run as the root user_
-
-```text
-sudo su
-visudo /etc/sudoers
-```
-
-You will then add the following to the end of the file replacing \<username> with your user:
-
-```text
-username    ALL=(ALL) NOPASSWD:ALL
-```
-
-Then reboot.
