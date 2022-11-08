@@ -13,6 +13,7 @@ Use the following Debian ISO as the base:
 __NOTE:__ _do NOT grab the EDU download. This image includes non-free and firmware_
 
 ### To Install
+This must be run as the `root` user.
 
 ```bash
 bash <(wget -qO- https://raw.githubusercontent.com/gkuba/Debian-Gkuba/main/install.sh)
