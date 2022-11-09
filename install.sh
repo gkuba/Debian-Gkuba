@@ -155,7 +155,7 @@ fi
 function installPackages
 {
   echo
-  if [ $VERSION_CODENAME = "bullseye" ]; then
+  if [ $VERSION_CODENAME = "bullseye" ] && [[ "$checkRepoChange" =~ ^[Nn]$ ]]; then
     echo
     echo -e "${YELLOW}Installing packages ....${ENDCOLOR}"
     echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES_STABLE ${ENDCOLOR}"
@@ -164,7 +164,7 @@ function installPackages
   else
     echo
     echo -e "${YELLOW}Installing packages ....${ENDCOLOR}"
-    echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES ${ENDCOLOR}"
+    echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES_TESTING ${ENDCOLOR}"
     echo
     $PM_COMMAND $PM_INSTALL $WANTED_PACKAGES_TESTING
   fi
@@ -188,7 +188,7 @@ if [ -n "$*" ]; then
   echo
   echo -e "${GREEN}Done${ENDCOLOR}"
   exit
- fi
+fi
 
 ##############
 ## ENTRY POINT
