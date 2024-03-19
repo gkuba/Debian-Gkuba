@@ -14,8 +14,8 @@ PM_COMMAND=apt-get
 PM_INSTALL="install -y"
 WGET_IS_PRESENT="$(isPresent wget)"
 JAVA_PACKAGE="temurin-8-jdk temurin-17-jdk temurin-18-jdk"
-WANTED_PACKAGES_TESTING="git curl unzip nala vim most fontconfig zsh zsh-autosuggestions zsh-syntax-highlighting fonts-firacode"
-WANTED_PACKAGES_STABLE="git curl unzip vim most fontconfig zsh zsh-autosuggestions zsh-syntax-highlighting fonts-firacode"
+WANTED_PACKAGES_STABLE="git curl unzip nala vim most fontconfig zsh zsh-autosuggestions zsh-syntax-highlighting fonts-firacode jq"
+WANTED_PACKAGES_BULLSEYE="git curl unzip vim most fontconfig zsh zsh-autosuggestions zsh-syntax-highlighting fonts-firacode jq"
 RED="\e[31m"
 GREEN="\e[32m"
 YELLOW="\e[33m"
@@ -158,15 +158,15 @@ function installPackages
   if [ $VERSION_CODENAME = "bullseye" ] && [[ "$checkRepoChange" =~ ^[Nn]$ ]]; then
     echo
     echo -e "${YELLOW}Installing packages ....${ENDCOLOR}"
-    echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES_STABLE ${ENDCOLOR}"
+    echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES_BULLSEYE ${ENDCOLOR}"
     echo
-    $PM_COMMAND $PM_INSTALL $WANTED_PACKAGES_STABLE
+    $PM_COMMAND $PM_INSTALL $WANTED_PACKAGES_BULLSEYE
   else
     echo
     echo -e "${YELLOW}Installing packages ....${ENDCOLOR}"
-    echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES_TESTING ${ENDCOLOR}"
+    echo -e "${YELLOW}Selected Packages: $WANTED_PACKAGES_STABLE ${ENDCOLOR}"
     echo
-    $PM_COMMAND $PM_INSTALL $WANTED_PACKAGES_TESTING
+    $PM_COMMAND $PM_INSTALL $WANTED_PACKAGES_STABLE
   fi
   
 }
